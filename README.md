@@ -11,18 +11,18 @@
 
 
 调用viewTopThree()功能查看存款最高的前三位用户：
-![image]()
+![image](https://github.com/Bachamht/BankContract/blob/main/images/0ff50a08be61b3e9fd9d9827e875b986.png)
 
 账户**0x8FD116DaF3A17Fc2e8D10579EDB19c788Bb93A64**查看存入金额：
 ![image]()
 
 管理员查看总金额：
-![image]()
+![image](https://github.com/Bachamht/BankContract/blob/main/images/e65cabf9d87754e0233012cb68c45be7.png)
 
 管理员撤走所有资金：
 
-![image]()
+![image](https://github.com/Bachamht/BankContract/blob/main/images/f3ad4a631b3ade9c724a039797937310.png)
 
 区块浏览器整体记录：
-![image]()
+![image](https://github.com/Bachamht/BankContract/blob/main/images/5281f422403df309799b4e05a45861a0.png)
 
