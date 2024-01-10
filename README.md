@@ -20,7 +20,8 @@
 
 
 
-管理员查看总金额：
+管理员查看总金额：\
+
 ![image](https://github.com/Bachamht/BankContract/blob/main/images/e65cabf9d87754e0233012cb68c45be7.png)
 
 
