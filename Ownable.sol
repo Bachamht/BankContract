@@ -2,16 +2,6 @@
 
 pragma solidity ^0.8.0;
 
-/*
-• 编写一个 BigBank 合约,要求:
-
-• 仅 >0.001 ether(用modifier权限控制)可以存款
-
-• 把管理员转移给 Ownable 合约,只有 Ownable 可以调用
-
-    BigBank 的withdraw().
-
-*/
 import "./bank.sol";
 
 
@@ -20,12 +10,12 @@ contract Ownable {
     address internal contractOwner;
     address internal moneyOwner;
     modifier onlyContractOwner() {
-        require(msg.sender == contractOwner, "Only the administrator can withdraw money");
+        require(msg.sender == contractOwner, "Not administrator");
         _;
     }
 
     modifier onlyMoneyOwner() {
-        require(msg.sender == moneyOwner, "Only the administrator can withdraw money");
+        require(msg.sender == moneyOwner, "Not moneyOwner");
         _;
     }
 

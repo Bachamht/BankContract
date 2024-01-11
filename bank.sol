@@ -19,13 +19,13 @@ contract Bank is  IWithdraw{
 
     
     modifier onlyOwner() {
-        require(msg.sender == owner, "Only the administrator can withdraw money");
+        require(msg.sender == owner, "Not administrator ");
         _;
     }
     
 
     modifier onlyAdministrator() {
-         require(msg.sender == administrator, "Only the administrator can manage");
+         require(msg.sender == administrator, "Not administrator ");
         _;
     }
 
@@ -40,6 +40,11 @@ contract Bank is  IWithdraw{
         uint  amount = msg.value;
         address user = msg.sender;
         balances[user] += amount;
+        updateThree(user);
+    }
+
+    //topThree更新
+    function updateThree(address user) private {
         uint min = balances[user];
         uint minIndex = 3;
         for (uint i = 0; i < 3; i++) {
@@ -56,8 +61,6 @@ contract Bank is  IWithdraw{
             topThree[minIndex] = user;
         }
     }
-
-
     //管理员取出所有ETH
     function ownerWithdraw() public onlyAdministrator{
         address payable moneyOwner = payable(msg.sender);
@@ -69,7 +72,7 @@ contract Bank is  IWithdraw{
     function userWithdraw() public {
         address payable user = payable(msg.sender);
         uint userBalance = balances[user];
-        require(userBalance > 0,  "Your balance is less than 0"); 
+        require(userBalance > 0,  " Balance too low"); 
         user.transfer(userBalance);
         balances[user] = 0;
     }

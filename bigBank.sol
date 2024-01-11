@@ -2,16 +2,6 @@
 
 pragma solidity ^0.8.0;
 
-/*
-• 编写一个 BigBank 合约,要求:
-
-• 仅 >0.001 ether(用modifier权限控制)可以存款
-
-• 把管理员转移给 Ownable 合约,只有 Ownable 可以调用
-
-BigBank 的withdraw().
-
-*/
 
 import './bank.sol';
 contract BigBank is Bank {
