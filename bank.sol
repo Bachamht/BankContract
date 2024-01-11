@@ -2,27 +2,40 @@
 
 pragma solidity ^0.8.0;
 
-contract Bank {
+interface IWithdraw {
+        function ownerWithdraw() external;
+}
+
+contract Bank is  IWithdraw{
 
     constructor() {
         owner = msg.sender;
     }
 
-    address private owner;
-    mapping(address => uint) private  balances;
+    address internal owner;
+    address internal administrator;
+    mapping(address => uint) internal balances;
     address [3] private topThree;
 
+    
     modifier onlyOwner() {
         require(msg.sender == owner, "Only the administrator can withdraw money");
         _;
     }
+    
+
+    modifier onlyAdministrator() {
+         require(msg.sender == administrator, "Only the administrator can manage");
+        _;
+    }
+
     
     receive() external payable { 
         deposit();
     }
 
     //用户存款
-    function deposit() private {
+    function deposit() virtual internal {
         
         uint  amount = msg.value;
         address user = msg.sender;
@@ -46,10 +59,10 @@ contract Bank {
 
 
     //管理员取出所有ETH
-    function ownerWithdraw() public onlyOwner{
-        address payable administrator = payable(msg.sender);
-        administrator.transfer(address(this).balance);
-        balances[administrator] = 0;
+    function ownerWithdraw() public onlyAdministrator{
+        address payable moneyOwner = payable(msg.sender);
+        moneyOwner.transfer(address(this).balance);
+        balances[moneyOwner] = 0;
     }
 
     //用户取出存款
@@ -77,12 +90,6 @@ contract Bank {
     }
 
 
-    //当有用户取出存款后更新存款金额前三
-    function recalculateTopThree() private {
-        /*遇到问题：添加userWithdraw()这个功能后，如果有存款金额排名前三的用户取出存款则需要更新存款前三的数组。
-      更新前三数组则需要用for循环遍历所有用户，就会出现上课讲到的for循环那种经典bug
-      */
-    }
+ 
 
 }
-
