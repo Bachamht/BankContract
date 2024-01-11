@@ -2,7 +2,7 @@
 
 1.账户**A**向银行转入0.0009个SepoliaETH，转入失败
 
-![image]()
+![image](https://github.com/Bachamht/BankContract/blob/main/images/c846cc9cd28a3a9fb3e6ed6d3978ab12.png)
 
 2.账户**A**向银行转入**0.3**个SepoliaETH
 
@@ -20,5 +20,5 @@
 
 7.调用**Ownable**合约，账户**A**撤走银行所有存款
 
-![image]()
+![image](https://github.com/Bachamht/BankContract/blob/main/images/e822d9c28087eb6864d9d0e589ac82fd.png)
 
