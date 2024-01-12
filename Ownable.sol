@@ -32,5 +32,7 @@ contract Ownable {
     function withdraw(address bankContract) public onlyMoneyOwner {
         IWithdraw(bankContract).ownerWithdraw();
     }
+    
+    receive() external payable { }
 
 }
