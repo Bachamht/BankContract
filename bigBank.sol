@@ -18,7 +18,7 @@ contract BigBank is Bank {
   
     //用户存款
     function deposit() internal amountCheck(msg.value) override {
-        balances[msg.sender] = msg.value;
+        balances[msg.sender] += msg.value;
     }
 
     //向合约授予管理员权限

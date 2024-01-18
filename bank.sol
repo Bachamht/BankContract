@@ -64,17 +64,17 @@ contract Bank is  IWithdraw{
     //管理员取出所有ETH
     function ownerWithdraw() public onlyAdministrator{
         address payable moneyOwner = payable(msg.sender);
-        moneyOwner.transfer(address(this).balance);
         balances[moneyOwner] = 0;
+        moneyOwner.transfer(address(this).balance);
     }
 
     //用户取出存款
     function userWithdraw() public {
         address payable user = payable(msg.sender);
         uint userBalance = balances[user];
+        balances[user] = 0;
         require(userBalance > 0,  " Balance too low"); 
         user.transfer(userBalance);
-        balances[user] = 0;
     }
 
     //查看银行存款总额
